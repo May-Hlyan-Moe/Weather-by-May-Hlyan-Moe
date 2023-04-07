@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Weather by May-Hlyan-Moe</title>
+  <meta charset="UTF-8" />
+
+  <link rel="stylesheet" href="https://kit.fontawesome.com/aad74cd859.css" crossorigin="anonymous" />
+  <script src="https://kit.fontawesome.com/aad74cd859.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Josefin+Sans:wght@500&family=Kanit&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+  <style>
+        body {
+        background: #dfe8cc;
+        margin: 30px auto;
+        }
+
+        h1 {
+        color: #a9907e;
+        font-family: "Fredoka One", cursive;
+        }
+
+        h3 {
+        font-family: "Fredoka One", cursive;
+        }
+
+        #magic {
+        color: #519259;
+        text-align: center;
+        margin-bottom: 10px;
+        font-size: 25px;
+        }
+
+        #description {
+        color: #096c47;
+        font-family: "Fredoka One", cursive;
+        text-align: right;
+        font-size: 30px;
+        }
+
+        #data {
+        font-family: "Fredoka One", cursive;
+        text-align: right;
+        color: #acbd86;
+        font-size: 25px;
+        }
+
+        .myan {
+        font-size: 30px;
+        }
+
+        button {
+        display: block;
+        margin: auto;
+        color: chocolate;
+        }
+
+        .temperature {
+        font-size: 60px;
+        font-family: "Josefin Sans", sans-serif;
+        font-weight: bold;
+        color: #445c3c;
+        
+        }
+
+        #unit {
+        font-size: 30px;
+        font-family: "Josefin Sans", sans-serif;
+        color: #4a3333;
+        margin-left: 0;
+        position: relative;
+        top: -19px;
+        }
+
+        .luck {
+        padding: 7px 100px;
+        }
+
+        .lucky {
+        padding: 7px 50px;
+        }
+
+        footer {
+        text-decoration: underline;
+        font-family: "Fredoka One", cursive;
+        color: #905858;
+        }
+
+        table {
+        font-family: "Josefin Sans", sans-serif;
+        color: #5d3a3a;
+        }
+
+        footer:hover {
+        cursor: pointer;
+        }
+
+        #tempC {
+        color: #5a3921;
+        font-family: "Fredoka One", cursive;
+        cursor: default;
+        }
+
+        #tempF {
+        color: #5a3921;
+        font-family: "Fredoka One", cursive;
+        cursor: default;
+        }
+
+        #tempC:hover {
+        text-decoration: none;
+        }
+
+        #tempF:hover {
+        text-decoration: none;
+        }
+
+        #search-form {
+        max-width: fit-content;
+        }
+
+        #current {
+        background-color: #ffcdb5;
+        color: green;
+        border: 1px solid green;
+        border-radius: 4px;
+        transition: transform 1s ease;
+        font-family: "Fredoka One", cursive;
+        margin: 10px 0;
+        padding: 5px;
+        }
+        #current:hover {
+        transform: scale(1.1);
+        }
+
+        #search-button {
+        color: green;
+        background-color: #ffe5ab;
+        border: 1px solid green;
+        border-radius: 4px;
+        transition: transform 1s ease;
+        font-family: "Fredoka One", cursive;
+        margin: 10px 0;
+        padding: 5px;
+        }
+
+        #search-button:hover {
+        transform: scale(1.1);
+        }
+
+        #city-input {
+        font-family: "Fredoka One", cursive;
+        margin: 10px 0;
+        border: 1px solid green;
+        border-radius: 4px;
+        padding: 5px;
+        }
+
+        .App {
+        margin: 30px auto;
+        border: 1px solid #a4bc92;
+        border-radius: 10px;
+        padding: 30px;
+        max-width: fit-content;
+        }
+
+        #code {
+        font-family: "Courier New", Courier, monospace;
+        }
+
+        #clear-sky {
+        text-transform: capitalize;
+        }
+
+        #unit .active {
+          color: #096c47;
+        }
+
+        #weather-forecast {
+            font-family: "Fredoka One", cursive;
+            font-size: 20px;
+        }
+
+        #tomorrows-temperature-min {
+            opacity: 0.5;
+        }
+  </style>
+</head>
+
+<body>
+
+  <body>
+    <div class="App">
+      <form class="search-form mb-3" id="search-form">
+        <div class="row">
+          <div class="col-mid-6">
+            <input type="search" placeholder="Type a city.." autofocus="on" autocomplete="off" id="city-input" class="form-control shadow-sm" />
+          </div>
+          <div class="col-mid-3">
+            <input type="submit" value="Search" class="form-control btn btn-primary shadow-sm" id="search-button" />
+          </div>
+          <div class="col-mid-3">
+            <input type="submit" value="Current" class="form-control btn btn-primary shadow-sm" id="current" />
+          </div>
+        </div>
+      </form>
+
+      <h1>
+        <span id="town">
+          Yangon
+        </span>
+        ,
+        <span id="country">
+          Myanmar
+        </span>
+      </h1>
+
+      <hr />
+      <h2 id="data">
+        8:00pm
+      </h2>
+      <div id="description">
+        Cloudy
+      </div>
+      <hr />
+      <div class="clearfix weatherTemperature">
+        <div scope="row">
+            
+            <img src="http://openweathermap.org/img/wn/01n@2x.png" width="100" height="100" id="icon" alt="clear" />
+
+            <span class="temperature">
+            25
+            </span>
+
+            <span id="unit">
+            <a href="#" id="tempC" class="active">
+                °C
+            </a>
+            /
+            <a href="#" id="tempF">
+                °F
+            </a>
+            </span>
+
+        </div>
+      </div>
+
+      <hr />
+      <h3>
+        <div id="magic">
+          Current Weather
+        </div>
+      </h3>
+
+      <table class="table table-dark">
+
+        <tbody>
+          <tr>
+            <th scope="row"></th>
+            <td class="lucky">
+                Description
+            </td>
+            <td>
+              <span id="clear-sky">
+                Clear Sky
+              </span>
+
+            </td>
+          </tr>
+          <tr>
+            <th scope="row"></th>
+            <td class="lucky">
+                Wind Speed
+            </td>
+            <td class="luck"> 
+                <span id="wind-speed">
+                  11
+                </span> 
+                km/h
+            </td>
+          </tr>
+
+          <tr>
+            <th scope="row"></th>
+            <td class="lucky">
+                Humidity
+            </td>
+            <td class="luck"> 
+                <span id="humidity"> 
+                    15
+                </span>
+                %
+            </td>
+          </tr>
+          <tr>
+            <th scope="row"></th>
+            <td class="lucky">
+                Pressure
+            </td>
+            <td class="luck"> 
+                <span id="pressure">
+                    1013
+                </span>
+                mb
+            </td>
+          </tr>
+          <tr>
+            <th scope="row"></th>
+            <td class="lucky">
+                Visibility
+            </td>
+            <td class="luck"> 
+                <span id="visibility"> 
+                25 
+                </span> 
+                km
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <hr />
+
+    <span id="weather-forecast">
+        <div scope="col">
+            <div scope="row">
+                <span id="tomorrows">
+                    html
+                </span> 
+                <img src="https://openweathermap.org/img/wn/02n@2x.png" width="60" height="60" /> 
+                <span id="tomorrows-temperature">
+                    <span id="tomorrows-temperature-max">
+                        24°
+                    </span>
+                    <span id="tomorrows-temperature-min">
+                        14°
+                    </span>
+                </span>
+            </div>
+
+            
+        </div>
+
+    </span>
+
+      <hr />
+      <small>
+        <span id="code">
+          <a href="https://github.com/May-Hlyan-Moe/week-7-homework">
+            open-sourced code
+          </a>
+          by May Hlyan Moe
+        </span>
+      </small>
+    </div>
+    <script>
+      
+          function dateFormat(timestamp) {
+            let now = new Date();
+            let hours = now.getHours();
+            if (hours < 10) {
+              hours = `0${hours}`;
+            }
+            let minutes = now.getMinutes();
+            if (minutes < 10) {
+              minutes = `0${minutes}`;
+            }
+            let days = [
+              "Sunday",
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday",
+              "Saturday",
+            ];
+            let day = days[now.getDay()];
+            return `${day} ${hours}:${minutes}`;
+
+            /*console.log(minutes);
+            console.log(hours);
+            console.log(day); */
+          }
+
+          // forecast
+          function displayForecast() {
+            let forecastElement = document.querySelector("#weather-forecast");
+
+            let forecastHTML = `<div scope="col">`;
+
+            let days = ["Thu", "Fri", "Sat", "Sun"];
+
+            days.forEach(function (day) {
+              forecastHTML =
+                forecastHTML +
+                `   <div scope="row"> 
+                                <span id="tomorrows">
+                                    ${day}
+                                </span> 
+                            <img src="https://openweathermap.org/img/wn/02n@2x.png" width="60" height="60" /> 
+                            <span id="tomorrows-temperature">
+                                <span id="tomorrows-temperature-max">
+                                    24°
+                                </span>
+                                <span id="tomorrows-temperature-min">
+                                    14°
+                                </span>
+                            </span>
+                            </div>`;
+            });
+
+            forecastHTML = forecastHTML + `</div>`;
+
+            forecastElement.innerHTML = forecastHTML;
+          }
+
+          //feature2
+          function getForecast(coordintes) {
+            console.log(coordintes);
+            let apiKey="acc40a9f616ea523d341bf54d25ae67f";
+            let apiUrl=`https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}$units=metric`;
+            console.log(apiUrl);
+          }
+
+          //feature3
+          function showWeather(response) {
+            document.querySelector("#town").innerHTML = response.data.name;
+
+            document.querySelector(".temperature").innerHTML = Math.round(
+              response.data.main.temp
+            );
+
+            celsius = response.data.main.temp;
+
+            document.querySelector("#humidity").innerHTML =
+              response.data.main.humidity;
+
+            document.querySelector("#wind-speed").innerHTML = Math.round(
+              response.data.wind.speed * 3.6
+            );
+
+            document.querySelector("#pressure").innerHTML =
+              response.data.main.pressure;
+
+            document.querySelector("#visibility").innerHTML =
+              response.data.visibility * 0.001;
+
+            document.querySelector("#country").innerHTML =
+              response.data.sys.country;
+
+            document.querySelector("#description").innerHTML =
+              response.data.weather[0].main;
+
+            document.querySelector("#clear-sky").innerHTML =
+              response.data.weather[0].description;
+
+            let dateAndTime = document.querySelector("#data");
+            dateAndTime.innerHTML = dateFormat(response.data.dt * 1000);
+
+            let iconElement = document.querySelector("#icon");
+
+            iconElement.setAttribute(
+              "src",
+              `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+            );
+
+            /* iconElement.setAttribute("alt", response.data.weather[0].description); */
+          
+            getForecast(response.data.coord);
+          
+          
+          }
+
+          function localSearch(city) {
+            let apiKey = "acc40a9f616ea523d341bf54d25ae67f";
+            let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=acc40a9f616ea523d341bf54d25ae67f&units=metric`;
+            axios.get(apiUrl).then(showWeather);
+          }
+
+          function search(event) {
+            event.preventDefault();
+            let city = document.querySelector("#city-input").value;
+
+            localSearch(city);
+          }
+          /*let yangon = document.querySelector("#town");
+            let cityInput = document.querySelector("#city-input");
+            yangon.innerHTML = cityInput.value;
+            }
+            */
+          let searchCity = document.querySelector("#search-form");
+          searchCity.addEventListener("submit", search);
+          function searchCurrentFunction(position) {
+            let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&APPID=acc40a9f616ea523d341bf54d25ae67f&units=metric`;
+            axios.get(apiUrl).then(showWeather);
+          }
+
+          function currentFunction(event) {
+            event.preventDefault();
+            navigator.geolocation.getCurrentPosition(searchCurrentFunction);
+          }
+
+          let currentLocation = document.querySelector("#current");
+          currentLocation.addEventListener("click", currentFunction);
+
+          //feature3
+
+          function celsiusFunction(event) {
+            event.preventDefault();
+
+            let formula = document.querySelector(".temperature");
+            formula.innerHTML = Math.round(celsius);
+
+            celsiusLink.classList.add("active");
+            fahrenheit.classList.remove("active");
+          }
+
+          let celsiusLink = document.querySelector("#tempC");
+          celsiusLink.addEventListener("click", celsiusFunction);
+
+          let celsius = null;
+
+          function fahrenheitFunction(event) {
+            event.preventDefault();
+            let fahrenheitTemp = (celsius * 9) / 5 + 32;
+
+            let formula = document.querySelector(".temperature");
+            formula.innerHTML = Math.round(fahrenheitTemp);
+
+            celsiusLink.classList.remove("active");
+            fahrenheit.classList.add("active");
+          }
+
+          let fahrenheit = document.querySelector("#tempF");
+          fahrenheit.addEventListener("click", fahrenheitFunction);
+
+          localSearch("Yangon");
+          displayForecast();
+
+
+
+    </script>
+    
+</body>
+
+</html>
