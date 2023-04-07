@@ -15,12 +15,12 @@
 
   <style>
         body {
-        background: #dfe8cc;
+        background: #ddd6d2;
         margin: 30px auto;
         }
 
         h1 {
-        color: #a9907e;
+        color: #5e4d44;
         font-family: "Fredoka One", cursive;
         }
 
@@ -28,15 +28,10 @@
         font-family: "Fredoka One", cursive;
         }
 
-        #magic {
-        color: #519259;
-        text-align: center;
-        margin-bottom: 10px;
-        font-size: 25px;
-        }
+        
 
         #description {
-        color: #096c47;
+        color: #756955;
         font-family: "Fredoka One", cursive;
         text-align: right;
         font-size: 30px;
@@ -45,7 +40,7 @@
         #data {
         font-family: "Fredoka One", cursive;
         text-align: right;
-        color: #acbd86;
+        color: #A0937D;
         font-size: 25px;
         }
 
@@ -63,7 +58,7 @@
         font-size: 60px;
         font-family: "Josefin Sans", sans-serif;
         font-weight: bold;
-        color: #445c3c;
+        color: black;
         
         }
 
@@ -100,15 +95,17 @@
         }
 
         #tempC {
-        color: #5a3921;
+        color: black;
         font-family: "Fredoka One", cursive;
         cursor: default;
+        opacity: 0.5;
         }
 
         #tempF {
-        color: #5a3921;
+        color: black;
         font-family: "Fredoka One", cursive;
         cursor: default;
+        opacity: 0.5;
         }
 
         #tempC:hover {
@@ -124,9 +121,9 @@
         }
 
         #current {
-        background-color: #ffcdb5;
-        color: green;
-        border: 1px solid green;
+        background-color: #ffffff;
+        color: #707070;
+        border: 1px solid #A0937D;
         border-radius: 4px;
         transition: transform 1s ease;
         font-family: "Fredoka One", cursive;
@@ -138,9 +135,9 @@
         }
 
         #search-button {
-        color: green;
-        background-color: #ffe5ab;
-        border: 1px solid green;
+        color: #707070;
+        background-color: #ffffff;
+        border: 1px solid #A0937D;
         border-radius: 4px;
         transition: transform 1s ease;
         font-family: "Fredoka One", cursive;
@@ -153,16 +150,17 @@
         }
 
         #city-input {
+        color: #3e4341;
         font-family: "Fredoka One", cursive;
         margin: 10px 0;
-        border: 1px solid green;
+        border: 1px solid #A0937D;
         border-radius: 4px;
         padding: 5px;
         }
 
         .App {
         margin: 30px auto;
-        border: 1px solid #a4bc92;
+        border: 1px solid #A0937D;
         border-radius: 10px;
         padding: 30px;
         max-width: fit-content;
@@ -177,7 +175,8 @@
         }
 
         #unit .active {
-          color: #096c47;
+          color: black;
+          opacity: 1;
         }
 
         #weather-forecast {
@@ -249,12 +248,7 @@
         </div>
       </div>
 
-      <hr />
-      <h3>
-        <div id="magic">
-          Current Weather
-        </div>
-      </h3>
+      
 
       <table class="table table-dark">
 
@@ -388,6 +382,7 @@
 
           // forecast
           function displayForecast() {
+            
             let forecastElement = document.querySelector("#weather-forecast");
 
             let forecastHTML = `<div scope="col">`;
@@ -419,11 +414,11 @@
           }
 
           //feature2
-          function getForecast(coordintes) {
-            console.log(coordintes.lon);
+           function getForecast(coordinates) {
             let apiKey="acc40a9f616ea523d341bf54d25ae67f";
-            let apiUrl=`https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}$units=metric`;
-            
+            let apiUrl=`https://api.openweathermap.org/data/3.0/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=acc40a9f616ea523d341bf54d25ae67f&units=metric`;
+            console.log(apiUrl);
+            axios.get(apiUrl).then(displayForecast);
           }
 
           //feature3
