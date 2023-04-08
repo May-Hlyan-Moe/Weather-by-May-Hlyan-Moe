@@ -22,7 +22,7 @@
         h1 {
         color: #5e4d44;
         font-family: "Fredoka One", cursive;
-        font-size: 90px;
+        font-size: 80px;
         }
 
         h3 {
@@ -42,7 +42,7 @@
         font-family: "Fredoka One", cursive;
         text-align: right;
         color: #6b593c;
-        font-size: 25px;
+        font-size: 50px;
         }
 
         .myan {
@@ -56,7 +56,7 @@
         }
 
         .temperature {
-        font-size: 60px;
+        font-size: 90px;
         font-family: "Josefin Sans", sans-serif;
         font-weight: bold;
         color: black;
@@ -64,12 +64,12 @@
         }
 
         #unit {
-        font-size: 30px;
+        font-size: 40px;
         font-family: "Josefin Sans", sans-serif;
         color: #4a3333;
         margin-left: 0;
         position: relative;
-        top: -19px;
+        top: -40px;
         }
 
         .luck {
@@ -129,7 +129,8 @@
         transition: transform 1s ease;
         font-family: "Fredoka One", cursive;
         margin: 10px 0;
-        padding: 5px;
+        padding: 25px;
+        font-size: larger;
         }
         #current:hover {
         transform: scale(1.1);
@@ -182,7 +183,7 @@
 
         #weather-forecast {
             font-family: "Fredoka One", cursive;
-            font-size: 20px;
+            font-size: 50px;
         }
 
         #tomorrows-temperature-min {
@@ -191,6 +192,12 @@
 
         #tomorrows {
           color: #6b593c;
+        }
+
+        .table {
+          font-size: 45px;
+          font-family: "Fredoka One", cursive;
+          color: #AD8E70;
         }
   </style>
 </head>
@@ -202,7 +209,7 @@
       <form class="search-form mb-3" id="search-form">
         <div class="row">
           <div class="col-mid-6">
-            <input type="search" placeholder="Type a city.." autofocus="on" autocomplete="off" id="city-input" class="form-control shadow-sm" />
+            <input type="search" placeholder="Type a city.." autofocus="on" autocomplete="off" id="city-input" class="form-control shadow-sm" size="45" height="30"/>
           </div>
           <div class="col-mid-3">
             <input type="submit" value="Search" class="form-control btn btn-primary shadow-sm" id="search-button" />
@@ -255,7 +262,7 @@
 
       
 
-      <table class="table table-dark">
+      <table class="table">
 
         <tbody>
           <tr>
@@ -330,7 +337,7 @@
                 <span id="tomorrows">
                     
                 </span> 
-                <img src="" width="60" height="60" /> 
+                <img src="" width="70" height="70" /> 
                 <span id="tomorrows-temperature">
                     <span id="tomorrows-temperature-max">
                         
@@ -346,7 +353,6 @@
 
     </span>
 
-      <hr />
       <small>
         <span id="code">
           <a href="https://github.com/May-Hlyan-Moe/Weather-by-May-Hlyan-Moe">
@@ -411,7 +417,7 @@
                                 <span id="tomorrows">
                                     ${formatDay(forecastDay.time)}
                                 </span> 
-                            <img src=${forecastDay.condition.icon_url} width="60" height="60" /> 
+                            <img src=${forecastDay.condition.icon_url} width="70" height="70" /> 
                             <span id="tomorrows-temperature">
                                 <span id="tomorrows-temperature-max">
                                     ${Math.round(forecastDay.temperature.maximum)}°
@@ -420,7 +426,8 @@
                                     ${Math.round(forecastDay.temperature.minimum)}°
                                 </span>
                             </span>
-                            </div>`
+                            </div>
+                            <hr />`
                           }
             });
           
