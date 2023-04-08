@@ -56,7 +56,7 @@
         }
 
         .temperature {
-        font-size: 90px;
+        font-size: 100px;
         font-family: "Josefin Sans", sans-serif;
         font-weight: bold;
         color: black;
@@ -212,7 +212,7 @@
             <input type="search" placeholder="Type a city.." autofocus="on" autocomplete="off" id="city-input" class="form-control shadow-sm" size="45" height="30"/>
           </div>
           <div class="col-mid-3">
-            <input type="submit" value="Search" class="form-control btn btn-primary shadow-sm" id="search-button" />
+            <input type="submit" value="Search" class="form-control btn btn-primary shadow-sm" id="search-button" width="45"/>
           </div>
           <div class="col-mid-3">
             <input type="submit" value="Current" class="form-control btn btn-primary shadow-sm" id="current" />
@@ -406,28 +406,28 @@
             console.log(forecast);
             let forecastElement = document.querySelector("#weather-forecast");
 
-            let forecastHTML = `<div scope="col">`;
+            let forecastHTML = `<div class="row">`;
 
 
             forecast.forEach(function (forecastDay , index) {
-              if (index < 4) {
+              if (index < 3) {
               forecastHTML =
                 forecastHTML +
-                `   <div scope="row"> 
-                                <span id="tomorrows">
+                `   <div class="col-4"> 
+                                <div id="tomorrows">
                                     ${formatDay(forecastDay.time)}
-                                </span> 
+                                </div> 
                             <img src=${forecastDay.condition.icon_url} width="70" height="70" /> 
-                            <span id="tomorrows-temperature">
+                            <div id="tomorrows-temperature">
                                 <span id="tomorrows-temperature-max">
                                     ${Math.round(forecastDay.temperature.maximum)}°
                                 </span>
                                 <span id="tomorrows-temperature-min">
                                     ${Math.round(forecastDay.temperature.minimum)}°
                                 </span>
-                            </span>
                             </div>
-                            <hr />`
+                            </div>
+                            `
                           }
             });
           
