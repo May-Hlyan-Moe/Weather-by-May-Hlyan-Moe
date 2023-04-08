@@ -56,7 +56,7 @@
         }
 
         .temperature {
-        font-size: 100px;
+        font-size: 120px;
         font-family: "Josefin Sans", sans-serif;
         font-weight: bold;
         color: black;
@@ -64,7 +64,7 @@
         }
 
         #unit {
-        font-size: 40px;
+        font-size: 60px;
         font-family: "Josefin Sans", sans-serif;
         color: #4a3333;
         margin-left: 0;
@@ -129,8 +129,8 @@
         transition: transform 1s ease;
         font-family: "Fredoka One", cursive;
         margin: 10px 0;
-        padding: 25px;
-        font-size: larger;
+        padding: 5px;
+        font-size: 40px;
         }
         #current:hover {
         transform: scale(1.1);
@@ -145,6 +145,7 @@
         font-family: "Fredoka One", cursive;
         margin: 10px 0;
         padding: 5px;
+        font-size: 40px;
         }
 
         #search-button:hover {
@@ -158,6 +159,7 @@
         border: 1px solid #A0937D;
         border-radius: 4px;
         padding: 5px;
+        font-size: 40px;
         }
 
         .App {
@@ -170,6 +172,7 @@
 
         #code {
         font-family: "Courier New", Courier, monospace;
+        font-size: 40px;
         }
 
         #clear-sky {
@@ -191,7 +194,7 @@
         }
 
         #tomorrows {
-          color: #6b593c;
+          color: #4d412d;
         }
 
         .table {
@@ -209,7 +212,7 @@
       <form class="search-form mb-3" id="search-form">
         <div class="row">
           <div class="col-mid-6">
-            <input type="search" placeholder="Type a city.." autofocus="on" autocomplete="off" id="city-input" class="form-control shadow-sm" size="45" height="30"/>
+            <input type="search" placeholder="Type a city.." autofocus="on" autocomplete="off" id="city-input" class="form-control shadow-sm" />
           </div>
           <div class="col-mid-3">
             <input type="submit" value="Search" class="form-control btn btn-primary shadow-sm" id="search-button" width="45"/>
@@ -241,7 +244,7 @@
       <div class="clearfix weatherTemperature">
         <div scope="row">
             
-            <img src="" width="100" height="100" id="icon" alt="clear" />
+            <img src="" width="200" height="200" id="icon" alt="clear" />
 
             <span class="temperature">
             
@@ -332,8 +335,8 @@
       <hr />
 
     <span id="weather-forecast">
-        <div scope="col">
-            <div scope="row">
+        <div class="row">
+            <div class="col-4">
                 <span id="tomorrows">
                     
                 </span> 
@@ -353,14 +356,14 @@
 
     </span>
 
-      <small>
+      <hr />
         <span id="code">
           <a href="https://github.com/May-Hlyan-Moe/Weather-by-May-Hlyan-Moe">
             open-sourced code
           </a>
           by May Hlyan Moe
         </span>
-      </small>
+      
     </div>
     <script>
       
@@ -417,7 +420,7 @@
                                 <div id="tomorrows">
                                     ${formatDay(forecastDay.time)}
                                 </div> 
-                            <img src=${forecastDay.condition.icon_url} width="70" height="70" /> 
+                            <img src=${forecastDay.condition.icon_url} width="100" height="100" /> 
                             <div id="tomorrows-temperature">
                                 <span id="tomorrows-temperature-max">
                                     ${Math.round(forecastDay.temperature.maximum)}°
