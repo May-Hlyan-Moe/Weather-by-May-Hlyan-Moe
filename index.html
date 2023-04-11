@@ -183,6 +183,12 @@
         #weather-forecast {
             font-family: "Fredoka One", cursive;
             font-size: 50px;
+            display: inline;
+            justify-content: space-around;    
+        }
+
+        #tomorrows-temperature {
+          margin-left: 30px;
         }
 
         #tomorrows-temperature-min {
@@ -191,12 +197,16 @@
 
         #tomorrows {
           color: #4d412d;
+          margin-left: 50px;
         }
 
         .table {
           font-size: 45px;
           font-family: "Fredoka One", cursive;
           color: #AD8E70;
+        }
+        img {
+          margin-left: 50px;
         }
   </style>
 </head>
@@ -409,7 +419,7 @@
 
 
             forecast.forEach(function (forecastDay , index) {
-              if (index < 4 & index > 0) {
+              if (index < 3.5 & index > 0) {
               forecastHTML =
                 forecastHTML +
                 `   <div class="col-4"> 
