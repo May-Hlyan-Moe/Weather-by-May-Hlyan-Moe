@@ -175,6 +175,7 @@
         #each-forecast {
           position: relative;
           justify-content: space-between; 
+          text-align: center;
         }
 
         #tomorrows-temperature-min {
@@ -183,6 +184,12 @@
         
         table {
           font-size: 18px;
+          margin: 20px 0;
+        }
+
+        .bar {
+          width: 100%;
+          border-bottom: 1px solid #cacaca;
           margin: 20px 0;
         }
         
@@ -217,7 +224,7 @@
         </span>
       </h1>
 
-      <hr />
+      <div class="bar"></div>
 
       <h2 id="data">
 
@@ -226,7 +233,7 @@
 
       </div>
 
-      <hr />
+      <div class="bar"></div>
 
       <div class="clearfix weatherTemperature">
         <div scope="row">
@@ -250,7 +257,7 @@
         </div>
       </div>
 
-      <hr />
+      <div class="bar"></div>
 
       <table>
         <tbody>
@@ -306,7 +313,7 @@
         </tbody>
       </table>
 
-      <hr />
+      <div class="bar"></div>
 
       <span id="weather-forecast">
         <div class="row">
