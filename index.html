@@ -5,6 +5,18 @@
   <title>Weather by May-Hlyan-Moe</title>
   <meta charset="UTF-8" />
   <meta name="description" content="Weather-by-May-Hlyan-Moe" />
+
+  <!-- offline link -->
+  <link rel="stylesheet" href="./bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="./bootstrap/bootstrap-grid.css">
+  <!-- <link rel="stylesheet" href="./bootstrap/bootstrap-reboot.css">
+  <script src="./bootstrap/bootstrap.bundle.min.js"></script> -->
+
+  <link rel="stylesheet" href="./fontawsome/all.min.css">
+  <link rel="stylesheet" href="./fontawsome/fontawesome.css">
+  <link rel="stylesheet" href="./webfonts">
+
+  <!-- online link -->
   <link rel="stylesheet" href="https://kit.fontawesome.com/aad74cd859.css" crossorigin="anonymous" />
   <script src="https://kit.fontawesome.com/aad74cd859.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous" />
@@ -15,161 +27,124 @@
 
   <style>
         body {
-        background: #d1d1d1;
-        margin: 30px auto;
-        line-height: normal;
+          /* font-family: "Playfair", serif; */
+          font-family: "DM Serif Text", serif; 
+          margin: 30px auto;
+          line-height: normal;
+        }
+        
+        .App {
+          background-color: #e8ecf7;
+          max-width: 600px;
+          display: block;
+          margin: 0 auto;
+          border-radius: 10px;
+          padding: 20px;
+          box-shadow: 1px 10px 10px #4b6670;
         }
 
         h1 {
-        color: #5e4d44;
-        font-family: "Fredoka One", cursive;
-        font-size: 40px;
+          font-size: 24px;
         }
-
-        h3 {
-        font-family: "Fredoka One", cursive;
-        }
-
-        
 
         #description {
-        color: #443b2c;
-        font-family: "Fredoka One", cursive;
-        text-align: right;
-        font-size: 30px;
+          text-align: right;
+          font-size: 20px;
         }
 
         #data {
-        font-family: "Fredoka One", cursive;
-        text-align: right;
-        color: #6b593c;
-        font-size: 30px;
-        }
-
-        button {
-        display: block;
-        margin: auto;
-        color: chocolate;
+          text-align: right;
+          font-size: 20px;
         }
 
         .temperature {
-        font-size: 60px;
-        font-family: "Josefin Sans", sans-serif;
-        font-weight: bold;
-        color: black;
-        
+          font-size: 50px;
+          font-weight: bold;
         }
 
         #unit {
-        font-size: 30px;
-        font-family: "Josefin Sans", sans-serif;
-        color: #4a3333;
-        margin-left: 0;
-        position: relative;
-        top: -40px;
+          font-size: 20px;
+          color: #4a3333;
+          margin-left: 0;
+          position: relative;
+          top: -40px;
+        }
+
+        #unit a {
+          text-decoration: none;
         }
 
         .luck {
-        padding: 7px 100px;
+          padding: 7px 100px;
         }
 
         .lucky {
-        padding: 7px 50px;
+          padding: 7px 50px;
         }
 
         footer {
-        text-decoration: underline;
-        font-family: "Fredoka One", cursive;
-        color: #905858;
-        }
-
-        table {
-        font-family: "Josefin Sans", sans-serif;
-        color: #5d3a3a;
+          text-decoration: underline;
+          color: #905858;
         }
 
         footer:hover {
-        cursor: pointer;
+          cursor: pointer;
         }
 
         #tempC {
-        color: black;
-        font-family: "Fredoka One", cursive;
-        cursor: default;
-        opacity: 0.5;
+          color: black;
+          cursor: pointer;
+          opacity: 0.5;
         }
 
         #tempF {
-        color: black;
-        font-family: "Fredoka One", cursive;
-        cursor: default;
-        opacity: 0.5;
+          color: black;
+          cursor: pointer;
+          opacity: 0.5;
         }
 
         #tempC:hover {
-        text-decoration: none;
+          text-decoration: none;
         }
 
         #tempF:hover {
-        text-decoration: none;
-        }
-
-        #search-form {
-        max-width: fit-content;
+          text-decoration: none;
         }
 
         #current {
-        background-color: #ffffff;
-        color: #707070;
-        border: 1px solid #A0937D;
-        border-radius: 4px;
-        transition: transform 1s ease;
-        font-family: "Fredoka One", cursive;
-        margin: 10px 0;
-        padding: 5px;
-        font-size: 20px;
+          background-color: #3A98B9;
+          border-color: #3A98B9;
+          border-radius: 4px;
+          transition: transform 0.5s ease;
+          margin: 10px 0;
+          padding: 5px;
+          font-size: 14px;
         }
+
         #current:hover {
-        transform: scale(1.1);
+          transform: scale(1.01);
         }
 
         #search-button {
-        color: #707070;
-        background-color: #ffffff;
-        border: 1px solid #A0937D;
-        border-radius: 4px;
-        transition: transform 1s ease;
-        font-family: "Fredoka One", cursive;
-        margin: 10px 0;
-        padding: 5px;
-        font-size: 20px;
+          background-color: #3A98B9;
+          border-color: #3A98B9;
+          border-radius: 4px;
+          transition: transform 0.5s ease;
+          margin: 10px 0;
+          padding: 5px;
+          font-size: 14px;
         }
 
         #search-button:hover {
-        transform: scale(1.1);
+          transform: scale(1.01);
         }
 
         #city-input {
-        color: #3e4341;
-        font-family: "Fredoka One", cursive;
-        margin: 10px 0;
-        border: 1px solid #A0937D;
-        border-radius: 4px;
-        padding: 5px;
-        font-size: 20px;
-        }
-
-        .App {
-        margin: 30px 40px;
-        border: 1px solid #A0937D;
-        border-radius: 10px;
-        padding: 30px;
-        
-        }
-
-        #code {
-        font-family: "Courier New", Courier, monospace;
-        font-size: 20px;
+          color: #3e4341;
+          margin: 10px 0;
+          border-radius: 4px;
+          padding: 5px;
+          font-size: 14px;
         }
 
         .sourced {
@@ -178,7 +153,7 @@
         }
 
         #clear-sky {
-        text-transform: capitalize;
+          text-transform: capitalize;
         }
 
         #unit .active {
@@ -186,12 +161,15 @@
           opacity: 1;
         }
 
+        .weatherTemperature {
+          margin: 20px;
+        }
+
         #weather-forecast {
-            font-family: "Fredoka One", cursive;
-            font-size: 30px;
-            
-               
-              
+          display: flex;
+          align-items: center;
+          justify-content: space-around;
+          font-size: 20px; 
         }
 
         #each-forecast {
@@ -200,85 +178,13 @@
         }
 
         #tomorrows-temperature-min {
-            opacity: 0.5;
+          opacity: 0.5;
         }
-
-        #tomorrows {
-          color: #4d412d;
-           
-        }
-
-        .table {
-          font-size: 25px;
-          font-family: "Fredoka One", cursive;
-          color: #AD8E70;
-        }
-
         
-
-        @media screen and (max-width: 700px) {
-          body {
-        background: #d1d1d1;
-        margin: 30px auto;
-        line-height: 1;
+        table {
+          font-size: 18px;
+          margin: 20px 0;
         }
-
-        h1 {
-        font-size: 55px;
-        }
-
-        #description {
-        font-size: 40px;
-        }
-
-        #data {
-        font-size: 40px;
-        }
-
-        .temperature {
-        font-size: 100px;
-        }
-
-        #unit {
-        font-size: 50px;
-        top: -30px;
-        }
-
-        #current {
-          font-size: 23px;
-        }
-
-        #city-input {
-           font-size: 23px;
-        }
-
-        #search-button {
-          font-size: 23px;
-        }
-
-        .App {
-        margin: 20px 20px;
-        border: 1px solid #A0937D;
-        border-radius: 10px;
-        padding: 20px;
-        }
-
-        #weather-forecast {
-            text-align: center;
-            font-size: 40px;
-
-        }
-
-        #code {
-        font-size: 25px;
-        }
-
-        .table {
-          font-size: 35px;
-        }
-
-  
-      }
         
   </style>
 </head>
@@ -288,19 +194,20 @@
      <div class="App">
       <form class="search-form mb-3" id="search-form">
         <div class="row">
-          <div class="col-mid-6">
+          <div class="col-6">
             <input type="search" placeholder="Type a city.." autofocus="on" autocomplete="off" id="city-input" class="form-control shadow-sm" />
           </div>
-          <div class="col-mid-3">
+          <div class="col-3">
             <input type="submit" value="Search" class="form-control btn btn-primary shadow-sm" id="search-button" width="45"/>
           </div>
-          <div class="col-mid-3">
+          <div class="col-3">
             <input type="submit" value="Current" class="form-control btn btn-primary shadow-sm" id="current" />
           </div>
         </div>
       </form>
 
       <h1>
+        <i class="fa-solid fa-location-dot"></i>
         <span id="town">
           
         </span>
@@ -311,20 +218,23 @@
       </h1>
 
       <hr />
+
       <h2 id="data">
-        
+
       </h2>
       <div id="description">
-        
+
       </div>
+
       <hr />
+
       <div class="clearfix weatherTemperature">
         <div scope="row">
             
             <img src="" width="150" class="img-now" id="icon" alt="clear" />
 
             <span class="temperature">
-            
+
             </span>
 
             <span id="unit">
@@ -340,17 +250,14 @@
         </div>
       </div>
 
-      
+      <hr />
 
-      <table class="table">
-
+      <table>
         <tbody>
-          
-            
           <tr>
             <th scope="row"></th>
             <td class="lucky">
-                Wind Speed
+                Wind Speed:
             </td>
             <td class="luck"> 
                 <span id="wind-speed">
@@ -363,7 +270,7 @@
           <tr>
             <th scope="row"></th>
             <td class="lucky">
-                Humidity
+                Humidity:
             </td>
             <td class="luck"> 
                 <span id="humidity"> 
@@ -375,7 +282,7 @@
           <tr>
             <th scope="row"></th>
             <td class="lucky">
-                Pressure
+                Pressure:
             </td>
             <td class="luck"> 
                 <span id="pressure">
@@ -387,7 +294,7 @@
           <tr>
             <th scope="row"></th>
             <td class="lucky">
-                Visibility
+                Visibility:
             </td>
             <td class="luck"> 
                 <span id="visibility"> 
@@ -401,37 +308,31 @@
 
       <hr />
 
-    <span id="weather-forecast">
+      <span id="weather-forecast">
         <div class="row">
             <div class="col" id="each-forecast">
                 <span id="tomorrows">
-                    
+
                 </span> 
                 <img src=""  class="img-forecast"/> 
                 <span id="tomorrows-temperature">
                     <span id="tomorrows-temperature-max">
-                        
+
                     </span>
                     <span id="tomorrows-temperature-min">
-                        
+                      
                     </span>
                 </span>
             </div>
-
-            
         </div>
-
-    </span>
-
-      <hr />
-        <span id="code">
-          <a href="https://github.com/May-Hlyan-Moe/Weather-by-May-Hlyan-Moe" class="sourced">
-            open-sourced code 
-          </a>
-          by May Hlyan Moe
-        </span>
-      
+      </span>
     </div>
+
+    <p class="text-center m-4">
+      <a href="https://github.com/May-Hlyan-Moe/Weather-by-May-Hlyan-Moe" class="sourced">open-sourced code</a>
+          by May Hlyan Moe
+    </p>
+
     <script>
       
           function dateFormat(timestamp) {
